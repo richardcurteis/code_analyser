@@ -12,7 +12,7 @@ ext_checks = {
     "logs": { "extensions": ['.log'], "located": [] },
     "xml": { "extensions": ['.xml'], "located": [] },
     "db": { "extensions": ['.db', '.mdb', '.sql', '.sqlite', '.db3', '.dbf', '.s3db', '.myd'], "located": [] },
-    "hvt": { "extensions": ['user', 'database', 'conf', 'config', 'configuration', 'db', 'password', 'dockerfile'], "located": [] },
+    "hvt": { "extensions": ['user', 'database', 'conf', 'secret', 'config', 'configuration', 'db', 'password', 'dockerfile'], "located": [] },
     "investigate": { "extensions": ['.csv', '.bak', '.backup'], "located": [] }
 }
 
