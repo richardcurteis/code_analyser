@@ -39,8 +39,8 @@ exec_types = {
     "node": {
         "checks": {
             "sqli": sql_checks,
-            "rce": ["exec(", "eval("],
-            "deserialization": [],
+            "rce": ["exec(", "eval(", "spawn("],
+            "deserialization": ['serialize(', 'deserialize(', "require('cryo')"],
             "secrets": secrets
             },
             "findings": findings
