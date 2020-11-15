@@ -17,7 +17,7 @@ ext_checks = {
 }
 
 sql_checks = ['sql', 'query', 'qry']
-secrets = ['SECRET', 'DJANGO_SECRET', 'ENV', 'API', 'PASS', 'TOKEN']
+secrets = ['SECRET', 'DJANGO_SECRET', 'SECRET_KEY', 'ENV', 'API', 'PASS', 'TOKEN', 'DEBUG=True']
 
 attack_checks = {
     "checks": {
@@ -48,8 +48,11 @@ exec_types = {
     "python": {
         "checks": {
             "sqli": sql_checks,
-            "rce": [],
-            "deserialization": [],
+            "rce": [ 
+                'system(', 'check_output(', 'popen(', 'popen2(', 'popen3(' 'Popen(', 'call(', 'communicate(', 'run(',
+                'spawn(', 'spawnlp(', 'spawnvp(', 'spawnlpe(', 'getstatusoutput(', 'getoutput(' 
+                ],
+            "deserialization": ['pickle', '__reduce'],
             "secrets": secrets
             }
     },
