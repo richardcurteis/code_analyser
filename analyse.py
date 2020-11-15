@@ -90,6 +90,7 @@ def check_extension(ext, f):
         return True if f.lower().endswith(ex) else False
 
 def is_high_value(f):
+    # Need to change this to point to dict
     hvt = ['user', 'database', 'conf', 'configuration', 'db', 'password', 'dockerfile', 'secret']
     for h in hvt:
         return True if h in f.lower().split('/')[-1] else False
