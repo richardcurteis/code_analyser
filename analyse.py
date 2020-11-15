@@ -17,7 +17,7 @@ ext_checks = {
 }
 
 sql_checks = ['sql', 'query', 'qry']
-secrets = ['SECRET', 'DJANGO_SECRET', 'ENV', 'API', 'PASS', "TOKEN"]
+secrets = ['SECRET', 'DJANGO_SECRET', 'ENV', 'API', 'PASS', 'TOKEN']
 
 attack_checks = {
     "checks": {
