@@ -2,6 +2,85 @@
 
 import argparse
 import os
+from prettytable import PrettyTable
+
+
+ext_checks = {
+    "exec_types": ['.php', '.js', '.cs', '.py', '.java', '.asp', '.aspx', '.jsp', '.ts'],
+    "configs": { "extensions": ['.conf', '.json', '.yml', '.yaml', '.cfg', '.ini', '.config'], "located": [] },
+    "shells": { "extensions": ['.sh', '.bat'], "located": [] },
+    "logs": { "extensions": ['.log'], "located": [] },
+    "xml": { "extensions": ['.xml'], "located": [] },
+    "db": { "extensions": ['.db', '.mdb', '.sql', '.sqlite', '.db3', '.dbf', '.s3db', '.myd'], "located": [] },
+    "hvt": { "extensions": ['user', 'database', 'conf', 'config', 'configuration', 'db', 'password', 'dockerfile'], "located": [] },
+    "investigate": { "extensions": ['.csv', '.bak', '.backup'], "located": [] }
+}
+
+sql_checks = ['sql', 'query', 'qry']
+secrets = ['SECRET', 'DJANGO_SECRET', 'ENV', 'API', 'PASS', "TOKEN"]
+
+attack_checks = {
+    "checks": {
+        "sqli": sql_checks,
+        "rce": [],
+        "deserialization": [],
+        "secrets": secrets
+    }
+}
+
+findings =  {
+    "type": "",
+    "file": "",
+    "find_string": "",
+    "line": ""
+} 
+
+exec_types = {
+    "node": {
+        "checks": {
+            "sqli": sql_checks,
+            "rce": ["exec(", "eval("],
+            "deserialization": [],
+            "secrets": secrets
+            },
+            "findings": findings
+    },
+    "python": {
+        "checks": {
+            "sqli": sql_checks,
+            "rce": [],
+            "deserialization": [],
+            "secrets": secrets
+            }
+    },
+    "dotnet": {
+        "checks": {
+            "sqli": sql_checks,
+            "rce": [],
+            "deserialization": [],
+            "secrets": secrets
+            },
+            "findings": findings
+    },
+    "php": {
+        "checks": {
+            "sqli": sql_checks,
+            "rce": [],
+            "deserialization": [],
+            "secrets": secrets
+            },
+            "findings": findings
+    },
+    "java": {
+        "checks": {
+            "sqli": sql_checks,
+            "rce": [],
+            "deserialization": [],
+            "secrets": secrets
+            },
+            "findings": findings
+    },
+}
 
 
 def get_args():
@@ -9,27 +88,17 @@ def get_args():
     parser.add_argument("--dir", "-d", help="Start directory to analyse", required=True)
     return parser.parse_args()
 
-
-def is_config_file(f):
-    return True if f.lower().endswith(
-        '.conf', '.json', '.yml', '.yaml', '.cgf', '.ini', '.config'
-        ) else False
-
-def is_shell_script(f):
-    return True if f.lower().endswith('.sh') else False
-
-def is_batch_script(f):
-    return True if f.lower().endswith('.bat') else False
-
-def is_log_file(f):
-    return True if f.lower().endswith('.log') else False
-
-def is_xml_file(f):
-    return True if f.lower().endswith('.xml') else False
+def check_extension(ext, f):
+    for ex in ext:
+        return True if f.lower().endswith(ex) else False
 
 def is_high_value(f):
-    hvt = ['user', 'database', 'configuration', 'db', 'password']
-    return any(hvt in f.lower())          
+    hvt = ['user', 'database', 'conf', 'configuration', 'db', 'password', 'dockerfile', 'secret']
+    for h in hvt:
+        return True if h in f.lower().split('/')[-1] else False
+
+def investigate(f):
+    return True if f.lower().endswith('.csv') else False       
 
 
 def get_all_files(dir):
@@ -40,9 +109,14 @@ def get_all_files(dir):
     return all_files
 
 
+def make_table():
+    pt = PrettyTable()
+    pt.field_names(["ID", "Vuln Class", "File Type", "File Path", "Finding", "Line #"])
+
+
 def main():
     args = get_args()
-    get_all_files(args.dir)
+    files = get_all_files(args.dir)
 
 
 if __name__ == "__main__":
