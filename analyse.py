@@ -12,21 +12,15 @@ ext_checks = {
     "logs": { "extensions": ['.log'], "located": [] },
     "xml": { "extensions": ['.xml'], "located": [] },
     "db": { "extensions": ['.db', '.mdb', '.sql', '.sqlite', '.db3', '.dbf', '.s3db', '.myd'], "located": [] },
-    "hvt": { "extensions": ['user', 'database', 'conf', 'secret', 'config', 'configuration', 'db', 'password', 'dockerfile'], "located": [] },
+    "hvt": { "extensions": ['user', 'database', 'conf', 'secret', 'config', 'configuration', 'db', 'dockerfile'], "located": [] },
     "investigate": { "extensions": ['.csv', '.bak', '.backup'], "located": [] }
 }
 
 sql_checks = ['sql', 'query', 'qry']
-secrets = ['SECRET', 'DJANGO_SECRET', 'SECRET_KEY', 'ENV', 'API', 'PASS', 'TOKEN', 'DEBUG=True']
-
-attack_checks = {
-    "checks": {
-        "sqli": sql_checks,
-        "rce": [],
-        "deserialization": [],
-        "secrets": secrets
-    }
-}
+secrets = [
+    'SECRET', 'DJANGO_SECRET', 'SECRET_KEY', 'ENV', 'API', 'PASS', 'TOKEN', 'DEBUG=True',
+    'username', 'password', 'user', 'pass', 'pwd'
+    ]
 
 findings =  {
     "type": "",
