@@ -13,7 +13,8 @@ ext_checks = {
     "xml": { "extensions": ['.xml'], "located": [] },
     "db": { "extensions": ['.db', '.mdb', '.sql', '.sqlite', '.db3', '.dbf', '.s3db', '.myd'], "located": [] },
     "hvt": { "extensions": ['user', 'database', 'conf', 'secret', 'config', 'configuration', 'db', 'dockerfile'], "located": [] },
-    "investigate": { "extensions": ['.csv', '.bak', '.backup'], "located": [] }
+    "investigate": { "extensions": ['.csv', '.bak', '.backup'], "located": [] },
+    "interesting_files": {"strings": ['commands', 'cronjobs', 'serviceescalations', 'exec']}
 }
 
 sql_checks = ['sql', 'query', 'qry']
