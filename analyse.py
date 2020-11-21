@@ -34,8 +34,8 @@ exec_types = {
     "node": {
         "checks": {
             "sqli": sql_checks,
-            "rce": ["exec(", "eval(", "spawn("],
-            "deserialization": ['serialize(', 'deserialize(', "require('cryo')"],
+            "rce": ["exec", "eval", "spawn"],
+            "deserialization": ['serialize', 'deserialize', "require('cryo')", 'cryo'],
             "secrets": secrets
             },
             "findings": findings
@@ -44,8 +44,8 @@ exec_types = {
         "checks": {
             "sqli": sql_checks,
             "rce": [ 
-                'system(', 'check_output(', 'popen(', 'popen2(', 'popen3(' 'Popen(', 'call(', 'communicate(', 'run(',
-                'spawn(', 'spawnlp(', 'spawnvp(', 'spawnlpe(', 'getstatusoutput(', 'getoutput(' 
+                'system', 'check_output', 'popen', 'popen2', 'popen3' 'Popen', 'call', 'communicate', 'run',
+                'spawn', 'spawnlp', 'spawnvp', 'spawnlpe', 'getstatusoutput', 'getoutput' 
                 ],
             "deserialization": ['pickle', '__reduce'],
             "secrets": secrets
