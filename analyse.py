@@ -95,7 +95,8 @@ def is_high_value(f):
         return True if h in f.lower().split('/')[-1] else False
 
 def investigate(f):
-    return True if f.lower().endswith('.csv') else False       
+    for i in ext_checks["interesting_files"][0]:
+        return True if f.lower().endswith(i) else False       
 
 
 def get_all_files(dir):
