@@ -7,7 +7,7 @@ from prettytable import PrettyTable
 
 ext_checks = {
     "exec_types": ['.php', '.js', '.cs', '.py', '.java', '.asp', '.aspx', '.jsp', '.ts'],
-    "configs": { "extensions": ['.conf', '.json', '.yml', '.yaml', '.cfg', '.ini', '.config'], "located": [] },
+    "configs": { "extensions": ['.conf', '.json', '.yml', '.yaml', '.cfg', '.ini', '.config', '.cnf'], "located": [] },
     "shells": { "extensions": ['.sh', '.bat'], "located": [] },
     "logs": { "extensions": ['.log'], "located": [] },
     "xml": { "extensions": ['.xml'], "located": [] },
