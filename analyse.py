@@ -14,7 +14,7 @@ ext_checks = {
     "db": { "extensions": ['.db', '.mdb', '.sql', '.sqlite', '.db3', '.dbf', '.s3db', '.myd'], "located": [] },
     "hvt": { "extensions": ['user', 'database', 'conf', 'secret', 'config', 'configuration', 'db', 'dockerfile'], "located": [] },
     "investigate": { "extensions": ['.csv', '.bak', '.backup'], "located": [] },
-    "interesting_files": {"strings": ['commands', 'cronjobs', 'serviceescalations', 'exec']}
+    "interesting_files": {"strings": ['commands', 'cronjobs', 'serviceescalations', 'exec', 'accesstoken']}
 }
 
 sql_checks = ['sql', 'query', 'qry']
