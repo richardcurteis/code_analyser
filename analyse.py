@@ -19,7 +19,7 @@ ext_checks = {
 
 sql_checks = ['sql', 'query', 'qry']
 secrets = [
-    'SECRET', 'DJANGO_SECRET', 'SECRET_KEY', 'ENV', 'API', 'PASS', 'TOKEN', 'DEBUG=True',
+    'SECRET', 'DJANGO_SECRET', 'SECRET_KEY', 'ENV', '.env', 'API', 'PASS', 'TOKEN', 'DEBUG=True',
     'username', 'password', 'user', 'pass', 'pwd'
     ]
 
@@ -35,7 +35,7 @@ exec_types = {
         "checks": {
             "sqli": sql_checks,
             "rce": ["exec", "eval", "spawn"],
-            "deserialization": ['serialize', 'deserialize', "require('cryo')", 'cryo'],
+            "deserialization": ['serialize', 'deserialize', 'unserialize', "require('cryo')", 'cryo', "require('node-serialize')", 'node-serialize'],
             "secrets": secrets
             },
             "findings": findings
