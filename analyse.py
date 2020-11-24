@@ -17,7 +17,7 @@ ext_checks = {
     "interesting_files": {"strings": ['commands', 'cronjobs', 'serviceescalations', 'exec', 'accesstoken']}
 }
 
-sql_checks = ['sql', 'query', 'qry']
+sql_checks = r".*(sql|query|qry|sequel).*(\+).*"
 secrets = [
     'SECRET', 'DJANGO_SECRET', 'SECRET_KEY', 'ENV', '.env', 'API', 'PASS', 'TOKEN', 'DEBUG=True',
     'username', 'password', 'user', 'pass', 'pwd'
@@ -33,16 +33,13 @@ findings =  {
 exec_types = {
     "node": {
         "checks": {
-            "sqli": sql_checks,
             "rce": ["exec", "eval", "spawn"],
             "deserialization": ['serialize', 'deserialize', 'unserialize', "require('cryo')", 'cryo', "require('node-serialize')", 'node-serialize'],
             "secrets": secrets
             },
-            "findings": findings
     },
     "python": {
         "checks": {
-            "sqli": sql_checks,
             "rce": [ 
                 'system', 'check_output', 'popen', 'popen2', 'popen3' 'Popen', 'call', 'communicate', 'run',
                 'spawn', 'spawnlp', 'spawnvp', 'spawnlpe', 'getstatusoutput', 'getoutput' 
@@ -53,30 +50,24 @@ exec_types = {
     },
     "dotnet": {
         "checks": {
-            "sqli": sql_checks,
             "rce": [],
             "deserialization": [],
             "secrets": secrets
             },
-            "findings": findings
     },
     "php": {
         "checks": {
-            "sqli": sql_checks,
             "rce": [],
             "deserialization": [],
             "secrets": secrets
             },
-            "findings": findings
     },
     "java": {
         "checks": {
-            "sqli": sql_checks,
             "rce": [],
             "deserialization": [],
             "secrets": secrets
             },
-            "findings": findings
     },
 }
 
